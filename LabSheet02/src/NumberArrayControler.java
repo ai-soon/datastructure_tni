@@ -1,0 +1,28 @@
+
+public class NumberArrayControler {
+	
+	private int[] nums;
+	
+	public NumberArrayControler() {
+		this.nums = new int[] {23, 67, 8, 91, 45, 12, 78};
+	}
+	
+	public void setNums(int[] nums) {
+		this.nums = nums;
+	}
+	
+	public int[] getNums() {
+		return nums;
+	}
+	
+	public void display(String message) {
+		System.out.println(message);
+		boolean first_element = true;
+		for (int num : nums) 
+		{
+			System.out.print((!first_element? ", " : "") + num); //condition ? true_result : flase_result
+			first_element = false;
+		}
+	}
+
+}
