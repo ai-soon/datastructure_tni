@@ -88,24 +88,28 @@ public class DoublyLinkedList {
 				head = null;
 				tail = null;
 			} else if (position == 0) {
-				// write statement for deleting the beginning
-				
+				// ลบตัวแรก (head)
+				head = head.next;
+				head.previous = null;
 			} else {
-				// write statement for deleting the specific position
+				// เดินไปหา node ก่อนหน้าตำแหน่งที่จะลบ
 				Node curr_node = head;
 				int curr_position = 0;
 				while (curr_node != null && curr_position < position-1) {
 					curr_node = curr_node.next;
-					position++;
+					curr_position++;
 				}
-				curr_node.next.previous = curr_node.previous;
-				curr_node.previous.next = curr_node.next;
-				curr_node.next = null;
-				curr_node.previous = null;
-				
+
+				if (curr_node.next.next == null) {
+					tail = curr_node;
+					curr_node.next = null;
+				} else {
+					curr_node.next = curr_node.next.next;
+					curr_node.next.previous = curr_node;
+				}
 			}
 		}
-		
+
 	}
 
 	// Method for a backward traversal (from the last node to the first node)
